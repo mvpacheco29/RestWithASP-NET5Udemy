@@ -13,13 +13,68 @@ namespace RestWithASPNET5Udemy.Controllers
             _logger = logger;
         }
 
-        [HttpGet("sum/{fisrtNumber}/{secondNumber}")]
-        public IActionResult Get(string fisrtNumber, string secondNumber)
+        [HttpGet("somar/{fisrtNumber}/{secondNumber}")]
+        public IActionResult Somar(string fisrtNumber, string secondNumber)
         {
             if (IsNumeric(fisrtNumber) && IsNumeric(secondNumber))
             {
                 var sum = ConvertToDecimal(fisrtNumber) + ConvertToDecimal(secondNumber);
                 return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("subtrair/{fisrtNumber}/{secondNumber}")]
+        public IActionResult Subtrair(string fisrtNumber, string secondNumber)
+        {
+            if (IsNumeric(fisrtNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(fisrtNumber) - ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("multiplicar/{fisrtNumber}/{secondNumber}")]
+        public IActionResult Multiplicar(string fisrtNumber, string secondNumber)
+        {
+            if (IsNumeric(fisrtNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(fisrtNumber) * ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("dividir/{fisrtNumber}/{secondNumber}")]
+        public IActionResult Dividir(string fisrtNumber, string secondNumber)
+        {
+            if (IsNumeric(fisrtNumber) && IsNumeric(secondNumber))
+            {
+                var sum = ConvertToDecimal(fisrtNumber) / ConvertToDecimal(secondNumber);
+                return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("media/{fisrtNumber}/{secondNumber}")]
+        public IActionResult Media(string fisrtNumber, string secondNumber)
+        {
+            if (IsNumeric(fisrtNumber) && IsNumeric(secondNumber))
+            {
+                var sum = (ConvertToDecimal(fisrtNumber) + ConvertToDecimal(secondNumber)) / 2;
+                return Ok(sum.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("raizquadrada/{fisrtNumber}")]
+        public IActionResult RaizQuadrada(string fisrtNumber)
+        {
+            if (IsNumeric(fisrtNumber))
+            {
+                var raizquadrada = Math.Sqrt((double)ConvertToDecimal(fisrtNumber));
+                return Ok(raizquadrada.ToString());
             }
             return BadRequest("Invalid Input");
         }
